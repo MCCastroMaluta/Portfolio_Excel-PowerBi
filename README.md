@@ -125,7 +125,16 @@ IF(
 * **Concentración de Mercado:** Detecté que el sello **Ivrea** lidera el volumen con **1,083 títulos**, mostrando una clara especialización en su sector.
 * **Análisis por Género:** El catálogo se distribuye en un **61.13% (M)** frente a un **38.87% (F)** en autoría.
 * **Benchmarking:** El precio promedio global es de **$27,826**, lo que sirve como base para comparar precios entre distintas categorías.
+  
+## 🛡️ Garantía de Diseño y Usabilidad (Calidad del Producto)
 
+Para asegurar que el dashboard sea una herramienta profesional y lista para producción, se implementaron estándares de **Robustez Visual**:
+
+* **Diseño Bloqueado (Locked Layout):** Se restringió el movimiento de objetos para evitar desalineaciones accidentales durante la navegación del usuario.
+* **Optimización de Interfaz:** Se configuraron los iconos de encabezado para reducir el ruido visual, evitando que cambios involuntarios en el orden de los datos afecten la interpretación de los KPIs.
+* **Consistencia de Filtros:** La configuración del Top 5 mediante agregación asegura que el usuario siempre visualice datos precisos y sin duplicados visuales, independientemente de la profundidad del análisis.
+
+---
 ![Dashboard Hoja 1](03_Images/hoja1.jpg)
 ![Dashboard Hoja 2](03_Images/hoja2.jpg)
 
@@ -150,7 +159,7 @@ IF(
 
 ### 1. Resumen de Situación
 
-El presente reporte sintetiza el análisis realizado sobre un dataset de **44,522 registros** y **23,023 autores**. El objetivo principal fue normalizar y enriquecer la información para obtener indicadores confiables de gestión. Se determinó que el **precio promedio general** del catálogo se sitúa en **$27,826**, observándose una fuerte concentración de títulos en géneros específicos.
+El presente reporte sintetiza el análisis realizado sobre un dataset de **44,489 registros** y **22,995 autores**. El objetivo principal fue normalizar y enriquecer la información para obtener indicadores confiables de gestión. Se determinó que el **precio promedio general** del catálogo se sitúa en **$27,817**, observándose una fuerte concentración de títulos en géneros específicos.
 
 ---
 
