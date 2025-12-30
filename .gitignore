@@ -1,0 +1,13 @@
+# Archivos temporales de Power BI
+*.tmp
+*.log
+*.zip
+*.bak
+
+# Archivos de configuración de usuario de Power BI
+*.pbix.user
+*.pbit.user
+
+# Archivos de sistema (Mac/Windows)
+.DS_Store
+Thumbs.db
