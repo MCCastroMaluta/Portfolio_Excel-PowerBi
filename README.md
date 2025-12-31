@@ -4,7 +4,7 @@
 
 Este proyecto nace con el objetivo de explorar el mercado editorial actual utilizando datos reales obtenidos mediante **Web Scraping**. Logré transformar una base de datos propia de **44,489 títulos** en un panel interactivo diseñado para la toma de decisiones.
 
-Durante el desarrollo, me enfocqué en identificar patrones de precios, el liderazgo de las editoriales y la distribución de género en la autoría. Uno de los mayores aprendizajes fue resolver técnicamente el "problema de empates" en rankings mediante **DAX**, asegurando que los gráficos muestren la información exacta y visualmente limpia.
+Durante el desarrollo, me enfoqué en identificar patrones de precios, el liderazgo de las editoriales y la distribución de género en la autoría. Uno de los mayores aprendizajes fue resolver técnicamente el "problema de empates" en rankings mediante **DAX**, asegurando que los gráficos muestren la información exacta y visualmente limpia.
 
 ---
 
@@ -64,16 +64,31 @@ Antes de pasar a Power BI, audité los datos con herramientas nativas de Excel:
 * **Tablas Dinámicas:** Para validar que los promedios y recuentos fueran consistentes entre categorías.
 * **Gráficos de Comparación:** Para detectar visualmente si alguna editorial o precio presentaba anomalías.
 * **Segmentadores (Slicers):** Implementé filtros rápidos para interactuar con los datos y verificar su coherencia.
-* **Optimización de Interfaz y UX:**
-  
-   1. Se implementó la **protección de hojas** con permisos específicos, permitiendo la interacción total con segmentadores pero bloqueando la edición accidental de celdas clave.
-   2. Se aplicó el bloqueo de **relación de aspecto y posición** en todos los gráficos; esto asegura que los elementos visuales mantengan su estructura fija y profesional, sin deformarse ni desplazarse durante el filtrado de datos.
+
+---
+
+## 🛡️ Garantía de Diseño, Usabilidad y Calidad del Dato
+
+Para asegurar que este proyecto sea una herramienta profesional, robusta y escalable, implementé estándares de calidad en cada etapa del desarrollo:
+
+### 📗 En Microsoft Excel (ETL y UX)
+
+* **Optimización de Interfaz y UX:** * Se implementó la **protección de hojas** con permisos específicos, permitiendo la interacción total con segmentadores pero bloqueando la edición accidental de celdas clave.
+    * Se aplicó el bloqueo de **relación de aspecto y posición** en todos los gráficos; esto asegura que los elementos visuales mantengan su estructura fija y profesional, sin deformarse ni desplazarse durante el filtrado de datos.
 * **Protección de Datos e Integridad:** Se bloquearon las hojas de "Catálogo" y "Autores" para resguardar la fuente de origen, configurando los permisos de modo que la seguridad de Excel no interfiera con la actualización automatizada del modelo en Power BI.
 
+### 📊 En Power BI (Modelado y Visualización)
+
+* **Optimización del Modelo (Performance):** Se aplicó una limpieza profunda en Power Query mediante la técnica de **"Quitar otras columnas"**, eliminando metadatos innecesarios y reduciendo el peso del archivo `.pbix`. Esto garantiza una mayor eficiencia en el motor de compresión y rapidez en la carga de visuales.
+* **Estructura de Navegación Bloqueada:** * Se activó el **Bloqueo de Objetos** (Locked Layout) en el lienzo para evitar desplazamientos accidentales de los gráficos durante el uso interactivo del dashboard.
+    * Se configuró la vista de página en modo **"Ajustar a la página"**, asegurando que el zoom y el encuadre sean constantes en cualquier resolución de pantalla.
+* **Control de Interfaz y Precisión:** * Se deshabilitaron los iconos de encabezado innecesarios para reducir el **ruido visual** y prevenir que el usuario altere involuntariamente el orden de los datos.
+    * La combinación de la medida de **Desempate DAX** con el filtrado por Valor Máximo asegura que los rankings (Top 5) sean exactos y estéticos, incluso ante empates en los precios.
+
 <p align="center">
-  <img src="03_Images/.gif" width="650" alt="Texto de explicacion">
+  <img src="03_Images/Modelo.png" width="650" alt="Modelo de datos">
   <br>
-  <em>Uso de la función que se utilizo, descripcion de la imagen.</em>
+  <em>Arquitectura del Modelo de Datos: Implementación de Esquema de Estrella para optimización de consultas.</em>
 </p>
 
 ---
@@ -116,7 +131,11 @@ IF(
 
 ```
 
-[INSERTAR AQUÍ: 03_Images/resultado_dax.png]
+<p align="center">
+  <img src="03_Images/DAX.png" width="650" alt="Implementación DAX">
+  <br>
+  <em>Lógica DAX: Implementación de la medida de desempate para garantizar la precisión en los rankings</em>
+</p>
 
 ---
 
@@ -124,66 +143,34 @@ IF(
 
 * **Concentración de Mercado:** Detecté que el sello **Ivrea** lidera el volumen con **1,083 títulos**, mostrando una clara especialización en su sector.
 * **Análisis por Género:** El catálogo se distribuye en un **61.13% (M)** frente a un **38.87% (F)** en autoría.
-* **Benchmarking:** El precio promedio global es de **$27,826**, lo que sirve como base para comparar precios entre distintas categorías.
-  
-## 🛡️ Garantía de Diseño y Usabilidad (Calidad del Producto)
+* **Benchmarking:** El precio promedio global es de **$27,817**, lo que sirve como base para comparar precios entre distintas categorías.
 
-Para asegurar que el dashboard sea una herramienta profesional y lista para producción, se implementaron estándares de **Robustez Visual**:
-
-* **Diseño Bloqueado (Locked Layout):** Se restringió el movimiento de objetos para evitar desalineaciones accidentales durante la navegación del usuario.
-* **Optimización de Interfaz:** Se configuraron los iconos de encabezado para reducir el ruido visual, evitando que cambios involuntarios en el orden de los datos afecten la interpretación de los KPIs.
-* **Consistencia de Filtros:** La configuración del Top 5 mediante agregación asegura que el usuario siempre visualice datos precisos y sin duplicados visuales, independientemente de la profundidad del análisis.
+<p align="center">
+  <img src="03_Images/Dashboard_1.gif" width="650" alt="Presentación del Dashboard">
+  <br>
+  <em>Navegación Interactiva: Visualización dinámica de KPIs y comportamiento del catálogo.</em>
+</p>
 
 ---
-![Dashboard Hoja 1](03_Images/hoja1.jpg)
+
+## ⚠️ Limitaciones y Contexto del Análisis
+
+Todo análisis de datos tiene un alcance definido por la naturaleza de su fuente. Para la correcta interpretación de este reporte, se deben considerar los siguientes puntos:
+
+* **Sesgo de Temporalidad (Impacto Post-Pandemia):** Se identificó una caída significativa en el volumen de títulos registrados entre **2020 y 2021**. Tras auditar el proceso de ETL, se confirmó que no se trata de una pérdida de datos, sino de un reflejo real del cese de actividades y distribución editorial durante la crisis sanitaria global.
+* **Representatividad de la Fuente:** Los datos provienen de un *web scraping* de una librería líder. Si bien la muestra es masiva (44k+ registros), los precios y el stock reflejan la realidad de dicho comercio y pueden variar respecto a otras cadenas o mercados internacionales.
+* **Enriquecimiento de Género:** La identidad de género fue asignada mediante un proceso de cruce de datos y validación manual. Existe un pequeño porcentaje de autores (menos del 5%) categorizados como "No identificado" debido a nombres ambiguos o falta de información pública disponible.
+* **Dependencia de Proveedores:** El análisis de concentración muestra que el catálogo está fuertemente influenciado por los tres sellos principales (Ivrea, Planeta y Penguin), lo que debe tenerse en cuenta al extrapolar tendencias de precios a editoriales independientes.
 
 ---
 
 ## 6. Estructura del Repositorio
 
 * 📁 **01_Data**: Carpeta con los datos `Raw` y los datos finales `Processed`.
-* 📁 **02_Report**: El archivo `.pbix` con el dashboard interactivo.
+* 📁 **02_Report**: El archivo `.pbix` con el dashboard interactivo y reporte ejecutivo.
 * 📁 **03_Images**: Capturas de pantalla y demostraciones visuales.
 
 ---
-
-# 📑 Reporte Ejecutivo: Análisis de Inventario y Catálogo Editorial
-
-**Para:** Dirección de Compras / Gerencia de Stock  
-**De:** M. Cristina Castro (Analista de Datos Junior)  
-**Fecha:** Diciembre 2025  
-**Asunto:** Hallazgos clave y recomendaciones estratégicas basadas en el catálogo actual.
-
----
-
-### 1. Resumen de Situación
-
-El presente reporte sintetiza el análisis realizado sobre un dataset de **44,489 registros** y **22,995 autores**. El objetivo principal fue normalizar y enriquecer la información para obtener indicadores confiables de gestión. Se determinó que el **precio promedio general** del catálogo se sitúa en **$27,817**, observándose una fuerte concentración de títulos en géneros específicos.
-
----
-
-### 2. Hallazgos del Análisis
-
-* **Impacto Histórico (Pandemia):** Se identificó una **caída pronunciada** en el volumen de publicaciones durante el periodo **2020-2021**. Tras validar la integridad de los datos, se confirmó que este fenómeno no responde a errores de carga, sino a una interrupción real del mercado que rompió una tendencia de crecimiento sostenido iniciada en 1991.
-* **Concentración de Proveedores:** Tres sellos editoriales (**Ivrea, Planeta y Penguin**) concentran la mayor parte de la oferta actual. Esto indica una alta dependencia de estos proveedores y sugiere una oportunidad para explorar editoriales independientes que permitan diversificar el stock.
-* **Perspectiva de Género:** Gracias al proceso de enriquecimiento de datos (mediante `BUSCARX` y validación manual), se detectó que el **38.87%** de la autoría es femenina. Este KPI es fundamental para diseñar futuras estrategias de inclusión y equilibrio en el catálogo comercial.
-
----
-
-### 3. Nota sobre la Calidad de los Datos (ETL)
-
-Para asegurar que las visualizaciones y conclusiones fueran veraces, se ejecutaron procesos críticos de limpieza:
-
-* **Corrección de Fechas:** Se identificaron y trataron años inválidos (como el valor **9999**), asegurando que las líneas de tiempo reflejen la evolución real del mercado.
-* **Normalización de Nombres:** Se eliminaron más de **20 tipos de errores de "ruido tipográfico"** en los nombres de editoriales y autores, garantizando que los filtros y segmentadores de Power BI y Excel funcionen con precisión total.
-
----
-
-### 4. Sugerencias Iniciales
-
-1. **Revisión de Stock 2020-2021:** Se sugiere auditar las colecciones de estos años para identificar posibles faltantes o "huecos" bibliográficos generados por la baja producción mundial durante la pandemia.
-2. **Monitoreo de Categorías Premium:** Dado que los sectores de **Tecnología e Ingeniería** registran los precios más altos, se recomienda un seguimiento cercano de sus márgenes para mantener la competitividad en el mercado.
-3. **Optimización de Segmentos:** Utilizar los datos de género obtenidos para nivelar la oferta en categorías donde la brecha de autoría es más pronunciada.
 
 ## 🚀 Cómo utilizar este proyecto
 
@@ -196,4 +183,3 @@ Para asegurar que las visualizaciones y conclusiones fueran veraces, se ejecutar
 ## 💡 Nota del Autor
 
 Este proyecto me permitió fortalecer mis habilidades en el ciclo completo del dato, desde la extracción hasta la visualización estratégica. Si tienes alguna sugerencia o feedback, ¡será muy bienvenido!
-# Portfolio_Excel-PowerBi
